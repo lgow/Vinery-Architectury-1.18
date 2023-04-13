@@ -1,21 +1,18 @@
 package satisfyu.vinery.client.render.block;
 
-import net.minecraft.util.math.RotationAxis;
-import satisfyu.vinery.block.WineBottleBlock;
-import satisfyu.vinery.block.entity.StorageBlockEntity;
-import satisfyu.vinery.util.ClientUtil;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.RotationAxis;
+import satisfyu.vinery.block.WineBottleBlock;
+import satisfyu.vinery.block.entity.StorageBlockEntity;
+import satisfyu.vinery.util.ClientUtil;
 
 public class NineBottleRenderer implements StorageTypeRenderer{
     @Override
     public void render(StorageBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers, DefaultedList<ItemStack> itemStacks) {
-        BlockRenderManager manager = MinecraftClient.getInstance().getBlockRenderManager();
         matrices.translate(-0.13, 0.335, 0.125);
         matrices.scale(0.9f, 0.9f, 0.9f);
         for (int i = 0; i < itemStacks.size(); i++) {
@@ -39,7 +36,7 @@ public class NineBottleRenderer implements StorageTypeRenderer{
                 }
 
                 matrices.translate(x, y, 0f);
-                matrices.multiply(RotationAxis.POSITIVE_Y.rotation(90));
+                matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(90));
                 ClientUtil.renderBlock(blockItem.getBlock().getDefaultState().with(WineBottleBlock.COUNT, 0), matrices, vertexConsumers, entity);
                 matrices.pop();
             }
