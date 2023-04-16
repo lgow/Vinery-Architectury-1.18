@@ -11,18 +11,20 @@ import net.minecraft.registry.tag.TagKey;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.registry.*;
+import satisfyu.vinery.util.VineryItemGroup;
 import satisfyu.vinery.world.VineryBiomeModification;
 import satisfyu.vinery.world.VineryFeatures;
 
 public class Vinery implements ModInitializer {
     public static final String MODID = "vinery";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-    //public static final ItemGroup CREATIVE_TAB = TabbedItemGroup.builder().build(new VineryIdentifier("vinery_tab"), g -> GUIIcon.of(() -> new ItemStack(ObjectRegistry.JUNGLE_RED_GRAPE)));
     public static final TagKey<Block> ALLOWS_COOKING_ON_POT = TagKey.of(Registries.BLOCK.getKey(), new VineryIdentifier("allows_cooking_on_pot"));
 
     public void onInitialize() {
+        VineryItemGroup.registerItemGroup();
         VineryEffects.init();
-        ObjectRegistry.init();
+        ObjectRegistry.registerVineryItems();
+        ObjectRegistry.registerVineryBlocks();
         VineryBlockEntityTypes.init();
         VineryScreenHandlerTypes.init();
         VineryRecipeTypes.init();

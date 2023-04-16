@@ -5,6 +5,8 @@ import com.mojang.datafixers.util.Pair;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.wood.block.StrippableLogBlock;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -24,6 +26,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import satisfyu.vinery.Vinery;
 import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.block.FlowerPotBlock;
 import satisfyu.vinery.block.*;
@@ -37,6 +40,7 @@ import satisfyu.vinery.block.stem.PaleStemBlock;
 import satisfyu.vinery.item.*;
 import satisfyu.vinery.util.GrapevineType;
 import satisfyu.vinery.util.VineryFoodComponent;
+import satisfyu.vinery.util.VineryItemGroup;
 import satisfyu.vinery.world.VineryConfiguredFeatures;
 
 import java.util.*;
@@ -224,6 +228,153 @@ public class ObjectRegistry {
     public static final Item WANDERING_WINEMAKER_SPAWN_EGG = register("wandering_winemaker_spawn_egg", new SpawnEggItem(VineryEntites.WANDERING_WINEMAKER, 0xb78272, 0x3c4a73, getSettings()));
 
     public static final Item TOMATO = register("tomato", new JuiceItem(getSettings().food(FoodComponents.APPLE)));
+
+
+    private static Item registerItem(String name, Item item) {
+        return Registry.register(Registries.ITEM, new Identifier(Vinery.MODID, name), item);
+    }
+
+    public static void addItemsToItemGroups() {
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY);
+        addToItemGroup(VineryItemGroup.VINERY, ROTTEN_CHERRY);
+        addToItemGroup(VineryItemGroup.VINERY, RED_GRAPE_SEEDS );
+        addToItemGroup(VineryItemGroup.VINERY, RED_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, WHITE_GRAPE_SEEDS );
+        addToItemGroup(VineryItemGroup.VINERY, WHITE_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, SAVANNA_RED_GRAPE_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, SAVANNA_RED_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, SAVANNA_WHITE_GRAPE_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, SAVANNA_WHITE_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, TAIGA_RED_GRAPE_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, TAIGA_RED_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, TAIGA_WHITE_GRAPE_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, TAIGA_WHITE_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, JUNGLE_RED_GRAPE_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, JUNGLE_RED_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, JUNGLE_WHITE_GRAPE_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, JUNGLE_WHITE_GRAPE);
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_SAPLING.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, GRAPEVINE_LEAVES.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_LEAVES.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WHITE_GRAPE_CRATE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, RED_GRAPE_CRATE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_CRATE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_CRATE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, GRAPEVINE_POT.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, FERMENTATION_BARREL.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WINE_PRESS.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHAIR.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, TABLE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WOOD_FIRED_OVEN.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STOVE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, KITCHEN_SINK.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WINE_RACK_1.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WINE_RACK_2.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WINE_RACK_3.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, WINE_RACK_5.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, BARREL.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STRIPPED_CHERRY_LOG.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_LOG.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STRIPPED_CHERRY_WOOD.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_WOOD.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STRIPPED_OLD_CHERRY_LOG.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, OLD_CHERRY_LOG.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STRIPPED_OLD_CHERRY_WOOD.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, OLD_CHERRY_WOOD.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_BEAM.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_PLANKS.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_FLOORBOARD.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_STAIRS.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_SLAB.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_FENCE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_FENCE_GATE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_BUTTON.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_PRESSURE_PLATE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_DOOR.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_TRAPDOOR.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_SIGN_ITEM);
+        addToItemGroup(VineryItemGroup.VINERY, WINDOW.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, GRAPEVINE_LATTICE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, LOAM.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, LOAM_STAIRS.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHORUS_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, MAGNETIC_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, NOIR_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, KING_DANIS_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, MELLOHI_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STAL_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STRAD_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, SOLARIS_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, BOLVAR_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, AEGIS_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CLARK_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHENET_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, KELP_CIDER.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_CIDER.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, JELLIE_WINE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_JAR.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, CHERRY_JAM.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_JAM.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, SWEETBERRY_JAM.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, GRAPE_JAM.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, PALE_STEM_BLOCK.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, SHELF.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, FLOWER_BOX.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, FLOWER_POT.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, BASKET.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, COOKING_POT.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, STACKABLE_LOG.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, FAUCET);
+        addToItemGroup(VineryItemGroup.VINERY, STRAW_HAT);
+        addToItemGroup(VineryItemGroup.VINERY, VINEMAKER_APRON);
+        addToItemGroup(VineryItemGroup.VINERY, VINEMAKER_LEGGINGS);
+        addToItemGroup(VineryItemGroup.VINERY, VINEMAKER_BOOTS);
+        addToItemGroup(VineryItemGroup.VINERY, GLOVES);
+        addToItemGroup(VineryItemGroup.VINERY, DOUGH);
+        addToItemGroup(VineryItemGroup.VINERY, CHOCOLATE_BREAD);
+        addToItemGroup(VineryItemGroup.VINERY, TOAST);
+        addToItemGroup(VineryItemGroup.VINERY, DONUT);
+        addToItemGroup(VineryItemGroup.VINERY, MILK_BREAD);
+        addToItemGroup(VineryItemGroup.VINERY, CRUSTY_BREAD.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, BREAD_SLICE);
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_CUPCAKE);
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_PIE_SLICE);
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_PIE.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, APPLE_MASH);
+        addToItemGroup(VineryItemGroup.VINERY, TOMATO_CROP.asItem());
+        addToItemGroup(VineryItemGroup.VINERY, TOMATO_SEEDS);
+        addToItemGroup(VineryItemGroup.VINERY, APPLESAUCE);
+        addToItemGroup(VineryItemGroup.VINERY, MULE_SPAWN_EGG);
+        addToItemGroup(VineryItemGroup.VINERY, WANDERING_WINEMAKER_SPAWN_EGG);
+        addToItemGroup(VineryItemGroup.VINERY, TOMATO);
+    }
+
+    public static void addToItemGroup(ItemGroup group, Item item) {
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
+    }
+
+    public static void registerVineryItems() {
+        Vinery.LOGGER.debug("Registering Mod Items for " + Vinery.MODID);
+
+        addItemsToItemGroups();
+    }
+
+    public static void registerVineryBlocks() {
+        Vinery.LOGGER.debug("Registering ModBlocks for " + Vinery.MODID);
+    }
+
+    private static Item registerBlockItem(String name, Block block, ItemGroup tab) {
+        Item item = Registry.register(Registries.ITEM, new Identifier(Vinery.MODID, name),
+                new BlockItem(block, new FabricItemSettings()));
+        ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.add(item));
+        return item;
+    }
+
+    private static Block registerBlockWithoutItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, new Identifier(Vinery.MODID, name), block);
+    }
 
 
 
