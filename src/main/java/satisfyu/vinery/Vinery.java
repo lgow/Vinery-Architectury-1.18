@@ -23,8 +23,9 @@ public class Vinery implements ModInitializer {
     public void onInitialize() {
         VineryItemGroup.registerItemGroup();
         VineryEffects.init();
-        ObjectRegistry.registerVineryItems();
+        ObjectRegistry.init();
         ObjectRegistry.registerVineryBlocks();
+        ObjectRegistry.registerVineryItems();
         VineryBlockEntityTypes.init();
         VineryScreenHandlerTypes.init();
         VineryRecipeTypes.init();
