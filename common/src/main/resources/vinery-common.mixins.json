@@ -8,11 +8,6 @@
     "ClientPlayerEntityMixin",
     "OrderedTextToolTipAccessor",
     "PlayerEntityRendererMixin",
-    "sign.MixinHangingSignBlockEntityRenderer",
-    "sign.MixinHangingSignEditScreen",
-    "sign.MixinSignBlockEntityRenderer",
-    "sign.MixinSignEditScreen",
-    "sign.MixinTexturedRenderLayers"
   ],
   "mixins": [
     "BlockMixin",
@@ -22,8 +17,6 @@
     "MobEffectUtilMixin",
     "StatusEffectUtilMixin",
     "WanderingTraderManagerMixin",
-    "boat.MixinBoatEntity",
-    "sign.MixinBlockEntityType"
   ],
   "injectors": {
     "defaultRequire": 1

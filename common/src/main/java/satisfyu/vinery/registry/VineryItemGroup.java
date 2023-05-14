@@ -4,8 +4,6 @@ import dev.architectury.registry.CreativeTabRegistry;
 
 import static satisfyu.vinery.Vinery.VINERY_TAB;
 import static satisfyu.vinery.registry.ObjectRegistry.*;
-import static satisfyu.vinery.registry.VineryBoatTypes.CHERRY_BOAT;
-import static satisfyu.vinery.registry.VineryBoatTypes.CHERRY_CHEST_BOAT;
 
 public class VineryItemGroup {
 
@@ -27,7 +25,7 @@ public class VineryItemGroup {
                 WINE_RACK_1.get(), WINE_RACK_2.get(), WINE_RACK_3.get(), WINE_RACK_5.get(), BARREL.get(), STRIPPED_CHERRY_LOG.get(), CHERRY_LOG.get(), STRIPPED_CHERRY_WOOD.get(),
                 CHERRY_WOOD.get(), STRIPPED_OLD_CHERRY_LOG.get(), OLD_CHERRY_LOG.get(), STRIPPED_OLD_CHERRY_WOOD.get(), OLD_CHERRY_WOOD.get(), CHERRY_BEAM.get(),
                 CHERRY_PLANKS.get(), CHERRY_FLOORBOARD.get(), CHERRY_STAIRS.get(), CHERRY_SLAB.get(), CHERRY_FENCE.get(), CHERRY_FENCE_GATE.get(), CHERRY_BUTTON.get(),
-                CHERRY_PRESSURE_PLATE.get(), CHERRY_DOOR.get(), CHERRY_TRAPDOOR.get(), CHERRY_SIGN_ITEM.get(), CHERRY_BOAT.get(), CHERRY_CHEST_BOAT.get(), WINDOW.get(), GRAPEVINE_LATTICE.get(), LOAM.get(), LOAM_STAIRS.get(),
+                CHERRY_PRESSURE_PLATE.get(), CHERRY_DOOR.get(), CHERRY_TRAPDOOR.get(), CHERRY_SIGN_ITEM.get(), VineryBoatTypes.CHERRY_BOAT.get(), VineryBoatTypes.CHERRY_CHEST_BOAT.get(), WINDOW.get(), GRAPEVINE_LATTICE.get(), LOAM.get(), LOAM_STAIRS.get(),
                 LOAM_SLAB.get(), COARSE_DIRT_SLAB.get(), DIRT_SLAB.get(), GRASS_SLAB.get(), WINE_BOTTLE.get(), RED_GRAPEJUICE_WINE_BOTTLE.get(), WHITE_GRAPEJUICE_WINE_BOTTLE.get(),
                 TAIGA_RED_GRAPEJUICE_BOTTLE.get(), TAIGA_WHITE_GRAPEJUICE_BOTTLE.get(), JUNGLE_RED_GRAPEJUICE_BOTTLE.get(), JUNGLE_WHITE_GRAPEJUICE_BOTTLE.get(),
                 SAVANNA_RED_GRAPEJUICE_BOTTLE.get(), SAVANNA_WHITE_GRAPEJUICE_BOTTLE.get(), APPLE_JUICE.get(),

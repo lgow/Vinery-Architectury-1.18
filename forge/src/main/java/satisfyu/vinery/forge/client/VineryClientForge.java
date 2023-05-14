@@ -32,27 +32,15 @@ public class VineryClientForge {
         event.registerEntityRenderer(VineryEntites.MULE.get(), MuleRenderer::new);
         event.registerEntityRenderer(VineryEntites.CHAIR.get(), ChairRenderer::new);
         event.registerEntityRenderer(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerRenderer::new);
-        event.registerEntityRenderer(TerraformBoatInitializer.BOAT.get(), context -> new CustomBoatEntityRenderer(context, false));
-        event.registerEntityRenderer(TerraformBoatInitializer.CHEST_BOAT.get(), context -> new CustomBoatEntityRenderer(context, true));
     }
 
     @SubscribeEvent
     public static void onEntityRenderers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(MuleModel.LAYER_LOCATION, MuleModel::getTexturedModelData);
-        registerModelLayers(event, VineryBoatTypes.CHERRY_BOAT_ID, false);
         registerArmorModelLayers(event);
     }
 
     public static void registerArmorModelLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
         event.registerLayerDefinition(StrawHatModel.LAYER_LOCATION, StrawHatModel::getTexturedModelData);
-    }
-
-
-    private static void registerModelLayer(EntityRenderersEvent.RegisterLayerDefinitions event, ResourceLocation boatId, boolean raft, boolean chest) {
-        event.registerLayerDefinition(CustomBoatClientHelper.getLayer(boatId, raft, chest), CustomBoatClientHelper.getTexturedModelDataProvider(raft, chest));
-    }
-    public static void registerModelLayers(EntityRenderersEvent.RegisterLayerDefinitions event, ResourceLocation boatId, boolean raft) {
-        registerModelLayer(event, boatId, raft, false);
-        registerModelLayer(event, boatId, raft, true);
     }
 }
