@@ -2,13 +2,13 @@ package satisfyu.vinery.client.render.block.storage;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import de.cristelknight.doapi.block.entity.StorageBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import satisfyu.vinery.block.WineBottleBlock;
-import satisfyu.vinery.block.entity.StorageBlockEntity;
-import satisfyu.vinery.client.render.block.storage.api.StorageTypeRenderer;
+import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import satisfyu.vinery.util.ClientUtil;
 
 public class NineBottleRenderer implements StorageTypeRenderer {

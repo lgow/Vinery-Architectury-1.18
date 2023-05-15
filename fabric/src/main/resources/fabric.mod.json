@@ -24,8 +24,8 @@
     "rei_client": [
       "satisfyu.vinery.compat.rei.VineryReiClientPlugin"
     ],
-    "vinery": [
-      "satisfyu.vinery.fabriclike.registry.VineryFabricLikeDefaultAPI"
+    "doapi": [
+      "satisfyu.vinery.util.api.VineryDoAPI"
     ],
     "fabric-datagen": [
       "satisfyu.vinery.fabric.datagen.ModDataGeneration"

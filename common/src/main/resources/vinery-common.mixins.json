@@ -3,11 +3,8 @@
   "package": "satisfyu.vinery.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "ArmorFeatureRendererMixin",
-    "ArmorStandRendererMixin",
     "ClientPlayerEntityMixin",
-    "OrderedTextToolTipAccessor",
-    "PlayerEntityRendererMixin",
+    "OrderedTextToolTipAccessor"
   ],
   "mixins": [
     "BlockMixin",
@@ -16,7 +13,7 @@
     "LivingEntityMixin",
     "MobEffectUtilMixin",
     "StatusEffectUtilMixin",
-    "WanderingTraderManagerMixin",
+    "WanderingTraderManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

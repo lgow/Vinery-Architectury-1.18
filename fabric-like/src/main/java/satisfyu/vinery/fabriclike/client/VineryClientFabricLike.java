@@ -6,6 +6,7 @@ import satisfyu.vinery.client.VineryClient;
 public class VineryClientFabricLike implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        VineryClient.preClientInit();
         VineryClient.onInitializeClient();
     }
 }

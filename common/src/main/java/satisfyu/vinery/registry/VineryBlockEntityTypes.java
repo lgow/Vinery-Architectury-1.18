@@ -2,18 +2,13 @@ package satisfyu.vinery.registry;
 
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfyu.vinery.Vinery;
 import satisfyu.vinery.VineryExpectPlatform;
 import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.block.entity.*;
-import satisfyu.vinery.util.VineryApi;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.function.Supplier;
 
 public class VineryBlockEntityTypes {
@@ -41,10 +36,6 @@ public class VineryBlockEntityTypes {
             ObjectRegistry.KING_DANIS_WINE.get(), ObjectRegistry.MAGNETIC_WINE.get(), ObjectRegistry.CHORUS_WINE.get(), ObjectRegistry.JELLIE_WINE.get(), ObjectRegistry.AEGIS_WINE.get()).build(null));
 
 
-
-
-    public static final RegistrySupplier<BlockEntityType<StorageBlockEntity>> STORAGE_ENTITY = create("storage", () -> BlockEntityType.Builder.of(
-            StorageBlockEntity::new, VineryExpectPlatform.getBlocksForStorage()).build(null));
 
 
 

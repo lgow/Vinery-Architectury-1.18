@@ -10,23 +10,4 @@ import net.minecraft.world.level.block.Block;
 import java.util.Map;
 
 public class VineryExpectPlatform {
-
-    @ExpectPlatform
-    public static void addFlammable(int burnOdd, int igniteOdd, Block... blocks){
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
-    }
-
-
-    @ExpectPlatform
-    public static Block[] getBlocksForStorage() {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static <T extends LivingEntity> void registerArmor(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
-    }
 }

@@ -1,7 +1,6 @@
 package satisfyu.vinery.client;
 
 import de.cristelknight.doapi.terraform.TerraformSignHelper;
-import dev.architectury.platform.Platform;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
@@ -13,8 +12,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GrassColor;
 import satisfyu.vinery.block.entity.chair.ChairRenderer;
@@ -24,12 +21,13 @@ import satisfyu.vinery.client.gui.StoveGui;
 import satisfyu.vinery.client.gui.WinePressGui;
 import satisfyu.vinery.client.model.MuleModel;
 import satisfyu.vinery.client.render.block.FlowerPotBlockEntityRenderer;
-import satisfyu.vinery.client.render.block.storage.api.StorageBlockEntityRenderer;
 import satisfyu.vinery.client.render.block.WineBottleRenderer;
 import satisfyu.vinery.client.render.entity.MuleRenderer;
 import satisfyu.vinery.client.render.entity.WanderingWinemakerRenderer;
-import satisfyu.vinery.registry.*;
-import satisfyu.vinery.util.networking.VineryMessages;
+import satisfyu.vinery.registry.CustomArmorRegistry;
+import satisfyu.vinery.registry.VineryBlockEntityTypes;
+import satisfyu.vinery.registry.VineryEntites;
+import satisfyu.vinery.registry.VineryScreenHandlerTypes;
 
 import static satisfyu.vinery.registry.ObjectRegistry.*;
 
@@ -42,15 +40,6 @@ public class VineryClient {
 
 
     public static void onInitializeClient() {
-        VineryMessages.registerS2CPackets();
-
-
-
-        if(!Platform.isForge()) registerEntityRenderers();
-
-
-
-        TerraformSignHelper.regsterSignSprite(CHERRY_SIGN_TEXTURE);
 
         RenderTypeRegistry.register(RenderType.cutout(),
                 RED_GRAPE_BUSH.get(), WHITE_GRAPE_BUSH.get(), CHERRY_DOOR.get(), COOKING_POT.get(),
@@ -72,14 +61,6 @@ public class VineryClient {
 
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> BiomeColors.getAverageGrassColor(world, pos), GRASS_SLAB, TAIGA_WHITE_GRAPE_BUSH, TAIGA_RED_GRAPE_BUSH);
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> BiomeColors.getAverageFoliageColor(world, pos), SAVANNA_RED_GRAPE_BUSH, SAVANNA_WHITE_GRAPE_BUSH, JUNGLE_RED_GRAPE_BUSH, JUNGLE_WHITE_GRAPE_BUSH, GRAPEVINE_STEM, GRAPEVINE_LATTICE);
-        /*ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
-            if (world == null || pos == null) {
-                return -1;
-            }
-            return BiomeColors.getAverageWaterColor(world, pos);
-            }, KITCHEN_SINK);
-
-         */
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> GrassColor.get(0.5, 1.0), GRASS_SLAB);
 
 
@@ -93,14 +74,12 @@ public class VineryClient {
 
         BlockEntityRendererRegistry.register(VineryBlockEntityTypes.FLOWER_POT_ENTITY.get(), FlowerPotBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(VineryBlockEntityTypes.WINE_BOTTLE_ENTITY.get(), WineBottleRenderer::new);
-        BlockEntityRendererRegistry.register(VineryBlockEntityTypes.STORAGE_ENTITY.get(), StorageBlockEntityRenderer::new);
     }
 
+    public static void preClientInit(){
+        //Signs
+        TerraformSignHelper.regsterSignSprite(CHERRY_SIGN_TEXTURE);
 
-    /**
-     * You can do that all again in VineryClientForge. I love it
-     */
-    private static void registerEntityRenderers(){
         //renderers
         EntityRendererRegistry.register(VineryEntites.MULE, MuleRenderer::new);
         EntityRendererRegistry.register(VineryEntites.WANDERING_WINEMAKER, WanderingWinemakerRenderer::new);
@@ -110,6 +89,9 @@ public class VineryClient {
         EntityModelLayerRegistry.register(MuleModel.LAYER_LOCATION, MuleModel::getTexturedModelData);
         CustomArmorRegistry.registerArmorModelLayers();
     }
+
+
+
 
     
     public static Player getClientPlayer() {
